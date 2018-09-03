@@ -1,0 +1,28 @@
+<form (ngSubmit)='submitFunction()' [formGroup]='sampleForm' novalidate class="form">
+
+  <div>
+    <input formControlName='name' type="text" class="form-control" placeholder="Enter your name" />
+    <div *ngIf="sampleForm.controls.name.errors && sampleForm.controls.name.touched">
+      <div [hidden]="!sampleForm.controls.name.errors.required">Name is required.</div>
+      <div [hidden]="!sampleForm.controls.name.errors.pattern">Sorry your name can't be stored on our system, the system only allows letters and spaces</div>
+    </div>
+  </div>
+
+  <div>
+    <input formControlName='age' type="number" class="form-control" placeholder="Enter your age" />
+    <div *ngIf="sampleForm.controls.age.errors && sampleForm.controls.age.touched">
+      <div [hidden]="!sampleForm.controls.age.errors.required">Age is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <input formControlName=responsible type="text" class="form-control" placeholder="Enter the responsible name" />
+    <div *ngIf="sampleForm.controls.responsible.errors && sampleForm.controls.responsible.touched">
+      <div [hidden]="!sampleForm.controls.responsible.errors.required">Responsible is required.</div>
+      <div [hidden]="!sampleForm.controls.responsible.errors.pattern">Sorry your name can't be stored on our system, the system only allows letters and spaces</div>
+    </div>
+  </div>
+
+  <br />
+  <button [disabled]='sampleForm.invalid' class="btn btn-default">Submit</button>
+</form>
